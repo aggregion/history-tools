@@ -10,6 +10,10 @@
 #include <boost/dll/runtime_symbol_info.hpp>
 #include <boost/exception/diagnostic_information.hpp>
 
+#ifdef INCLUDE_FILL_AGG_PLUGIN
+#include "fill_agg_plugin.hpp"
+#endif
+
 #ifdef INCLUDE_FILL_PG_PLUGIN
 #include "fill_pg_plugin.hpp"
 #endif

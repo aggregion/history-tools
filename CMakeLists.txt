@@ -166,6 +166,12 @@ show_found("    pq:         " "${PostgreSQL_INCLUDE_DIR}" "not found; will not b
 message(STATUS "Enabled plugins:")
 
 if (PostgreSQL_INCLUDE_DIR)
+    message(STATUS "    fill_agg_plugin")
+    add_app(fill-agg "-DDEFAULT_PLUGINS=fill_agg_plugin;-DINCLUDE_FILL_AGG_PLUGIN" "${PQXX_LIBRARIES}")
+    target_sources(fill-agg PRIVATE src/fill_plugin.cpp src/pg_plugin.cpp src/fill_agg_storage.cpp src/fill_agg_plugin.cpp)
+endif ()
+
+if (PostgreSQL_INCLUDE_DIR)
     message(STATUS "    fill_pg_plugin")
     add_app(fill-pg "-DDEFAULT_PLUGINS=fill_pg_plugin;-DINCLUDE_FILL_PG_PLUGIN" "${PQXX_LIBRARIES}")
     #target_sources(history-tools PRIVATE src/fill_plugin.cpp src/pg_plugin.cpp src/fill_pg_plugin.cpp)
